@@ -12,6 +12,7 @@ import com.notas.core.model.MNota;
 public class Convertidor {
 	public List<MNota> convertirLista(List<Nota>notas){
 		List<MNota> mnotas = new ArrayList<>();
+		
 		for (Nota nota : notas) {
 			mnotas.add(new MNota(nota));
 			

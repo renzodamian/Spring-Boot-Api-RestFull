@@ -24,7 +24,7 @@ public class Nota implements Serializable {
 		this.contenido = contenido;
 	}
 
-	//Importante que es esten en privado  asi estan ecampsulado y 
+	//Importante que es esten en privado  asi estan encampsulado y 
 	//por el metodo Get y Set acceder a ellos
 	
 	@GeneratedValue

@@ -11,7 +11,7 @@ import com.notas.core.entity.Nota;
 import com.notas.core.model.MNota;
 import com.notas.core.repository.NotaRepositorio;
 
-@Service("serivicio")
+@Service("servicio")
 public class NotaService {
 	//Inyectar un Bin
 	@Autowired
