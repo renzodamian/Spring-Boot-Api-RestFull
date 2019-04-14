@@ -2,6 +2,8 @@ package com.notas.core.service;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,42 +24,56 @@ public class NotaService {
 	@Autowired
 	@Qualifier("convertidor")
 	private Convertidor convertidor;
-	
+	//Log  son los mensajes que lanza spring cuando esta corriendo nuestra App
+	private static final Log logger=LogFactory.getLog(NotaService.class);
 	
 	public boolean crear(Nota nota) {
+		logger.info("CREANDO NOTA");
+		
 		try {
 			
 			repositorio.save(nota);
+			logger.info("NOTA CREADA");
 			return true;
 		}catch(Exception e) {
+			logger.error("Hubo ERROR");
 			return false;
 		}
 	}
 	
 	public boolean actualizar(Nota nota) {
+		logger.info("ACTUALIZANDO NOTA");
 		try {
 			//De ves verificar si el id es null o cero si no esta el registro debe crearlo
 			repositorio.save(nota);
+			logger.info("NOTA ACTUZALIDA");
 			return true;
+			
 		}catch(Exception e) {
+			logger.error("Hubo ERROR");
 			return false;
 		}
 	}
 	
 	public boolean borrar(String nombre, long id) {
+		logger.warn("BORRANDO NOTA");
 		try {
 			
 			Nota nota = repositorio.findByNombreAndId(nombre, id);
 			repositorio.delete(nota);
+			logger.info("NOTA BORRADA");
 			return true;
 		}catch(Exception e) {
+			logger.error("Hubo ERROR");
 			return false;
 		}
 	}
 
 	
 	public List<MNota>obtener(){
+		logger.info("OBTENIENDO TODOS LOS ELEMENTOS");
 		return convertidor.convertirLista(repositorio.findAll());
+		
 	}
 	
 	
